@@ -54,6 +54,17 @@ public class EmployeeWageComputation {
 			break;
 
 		}
+
+		// Monthly Wage Employee
+
+		int monthlyWage = 0;
+		int monthDays = 20;
+
+		monthlyWage = dailyWage * monthDays;
+		System.out.println("Monthly wage of Employee is " + monthlyWage);
+
+		monthlyWage = dailyWage2 * monthDays;
+		System.out.println("Monthly wage of part time Employee is " + monthlyWage);
 	}
 
 }
