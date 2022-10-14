@@ -8,10 +8,7 @@ public class EmployeeWageComputation {
 	static int fullDayHour = 8;
 	static int partTimeHour = 8;
 
-	public static void main(String[] args) {
-
-		System.out.println("Welcome to Employee Wage Computation");
-		System.out.println();
+	public static void computeEmpWage() {
 
 		// Employee attendance
 
@@ -92,6 +89,11 @@ public class EmployeeWageComputation {
 			}
 		}
 		System.out.println("Employee Total monthly wage is " + totalMonthlyWage2);
+	}
+
+	public static void main(String[] args) {
+		computeEmpWage();
+
 	}
 
 }
