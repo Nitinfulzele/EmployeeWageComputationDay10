@@ -8,7 +8,9 @@ public class EmployeeWageComputation {
 	static int fullDayHour = 8;
 	static int partTimeHour = 8;
 
-	public static void computeEmpWage() {
+	public static void computeEmpWage(String company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth) {
+	       
+		int empHrs = 8, totalEmpHrs = 12, totalWorkingDays = 29;
 
 		// Employee attendance
 
@@ -88,11 +90,14 @@ public class EmployeeWageComputation {
 				break;
 			}
 		}
-		System.out.println("Employee Total monthly wage is " + totalMonthlyWage2);
+		int totalEmpWage =  totalEmpHrs * empRatePerHour;
+		System.out.println("Total Emp Wage for Company: " +company+ "is:" +totalEmpWage);
+		return ;
 	}
 
 	public static void main(String[] args) {
-		computeEmpWage();
+		computeEmpWage("Airtel ", 20, 2, 10);
+		computeEmpWage("Idea ", 10, 4, 20);
 
 	}
 
