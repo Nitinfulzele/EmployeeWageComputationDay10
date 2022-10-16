@@ -1,103 +1,62 @@
 package EmployeeWageComputation;
 
-import java.util.Random;
-
 public class EmployeeWageComputation {
 
-	static int wagePerHour = 20;
-	static int fullDayHour = 8;
-	static int partTimeHour = 8;
+	 final int PartTime = 1;
+	 final int FullTime = 2;
+	
+	private String companyName;
+	private int WagePerHour;
+	private int numOfWorkingDays;
+	private int maxHoursPerMonth;
+	private int totalEmpWage;
+	
+public  EmployeeWageComputation(String company,int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth) {
+		
+		this.companyName = company;
+		this.WagePerHour = empRatePerHour;
+		this.numOfWorkingDays = numOfWorkingDays;
+		this.maxHoursPerMonth = maxHoursPerMonth;
+	
+	}
 
-	public static void computeEmpWage(String company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth) {
+
+	public void computeEmpWage() {
 	       
-		int empHrs = 8, totalEmpHrs = 12, totalWorkingDays = 29;
-
-		// Employee attendance
-
-		Random inp = new Random();
-		int empPresent = inp.nextInt(2);
-
-		if (empPresent == 0) {
-			System.out.println("Employee is Present");
-
-		} else {
-			System.out.println("Employee is Absent");
-		}
-
-		// Employee Daily Wage
-
-		int dailyWage = 0;
-
-		dailyWage = fullDayHour * wagePerHour;
-		System.out.println("Daily wage of Employee is " + dailyWage);
-
-		// Employee Part Time
-
-		dailyWage = partTimeHour * wagePerHour;
-		System.out.println("Employee is Part Time ");
-
-		// Switch case
-
-		int dailyWage2 = partTimeHour * 10;
-
-		empPresent = inp.nextInt(2);
-		switch (empPresent) {
-		case 0:
-			System.out.println("Employee is Present");
-			break;
-		case 1:
-			System.out.println("Employee is Part Time");
-			break;
-		case 2:
-			System.out.println("Employee is Absent");
-			break;
-
-		}
-
-		// Monthly Wage Employee
-
-		int monthlyWage = 0;
-		int monthDays = 20;
-
-		monthlyWage = dailyWage * monthDays;
-		System.out.println("Monthly wage of Employee is " + monthlyWage);
-
-		monthlyWage = dailyWage2 * monthDays;
-		System.out.println("Monthly wage of part time Employee is " + monthlyWage);
-
-		// Calculate wage till condition reached for month
-
-		monthlyWage = dailyWage2 * monthDays;
-		System.out.println("Monthly wage of part time Employee is " + monthlyWage);
-		int isWorking;
-		int totalMonthlyWage2 = 0;
-		int workingDays = 0;
-		int workingHour = 0;
-
-		while (workingHour <= 100 && workingDays <= 20) {
-
-			int isworking = inp.nextInt(2);
-			workingDays = workingDays + 1;
-
-			switch (isworking) {
-			case 0:
-				totalMonthlyWage2 = totalMonthlyWage2 + wagePerHour * 4;
-				workingHour = workingHour + 4;
-				break;
-			case 1:
-				totalMonthlyWage2 = totalMonthlyWage2 + wagePerHour * 8;
-				workingHour = workingHour + 8;
-				break;
+		// Variables
+				int empHrs = 0, totalEmpHrs = 0, totalWorkingDays = 0;
+				// Computation
+				while (totalEmpHrs <= maxHoursPerMonth && totalWorkingDays < numOfWorkingDays) {
+					totalWorkingDays++;
+					int empCheck = (int) Math.floor(Math.random() * 10) % 3;
+					switch (empCheck) {
+					case PartTime:
+						empHrs = 4;
+						break;
+					case FullTime:
+						empHrs = 8;
+						break;
+					default:
+						empHrs = 0;
+					}
+					totalEmpHrs += empHrs;
+					System.out.println("Day: " + totalWorkingDays + "Emp Hr :" + empHrs);
+				}
+				totalEmpWage = totalEmpHrs * WagePerHour;
 			}
-		}
-		int totalEmpWage =  totalEmpHrs * empRatePerHour;
-		System.out.println("Total Emp Wage for Company: " +company+ "is:" +totalEmpWage);
-		return ;
+	
+	@Override
+	public String toString() {
+		return "Total Emp Wage for Company: " + companyName+" is: " + totalEmpWage;
 	}
 
 	public static void main(String[] args) {
-		computeEmpWage("Airtel ", 20, 2, 10);
-		computeEmpWage("Idea ", 10, 4, 20);
+		EmployeeWageComputation Airtail = new EmployeeWageComputation("Airtail", 20, 2, 10);
+		EmployeeWageComputation Idea = new EmployeeWageComputation("Idea", 10, 4, 20);
+		Airtail.computeEmpWage();
+		System.out.println(Airtail);
+		Idea.computeEmpWage();
+		System.out.println(Idea);
 
 	}
 
